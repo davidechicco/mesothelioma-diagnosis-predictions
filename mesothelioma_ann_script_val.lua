@@ -1,7 +1,7 @@
 
 
 print('\n\n @ @ @ @ @ @ START @ @ @ @ @ @ @ ');
-print('file: mesothelioma_ann_script_start.lua');
+print('file: script_start.lua');
 print('author Davide Chicco <davide.chicco@gmail.com>');
 print(os.date("%c", os.time()));
 
@@ -41,7 +41,7 @@ function createPerceptron(this_input_number, this_hidden_units, this_hidden_laye
 
   if XAVIER_INITIALIZATION==true then 
     print("XAVIER_INITIALIZATION = "..tostring(XAVIER_INITIALIZATION))
-    perceptron = require("../../Neuroblastoma/src/lib/weight-init.lua")(perceptron,  'xavier') -- XAVIER
+    perceptron = require("./weight-init.lua")(perceptron,  'xavier') -- XAVIER
   end
 
   return perceptron;
@@ -85,7 +85,7 @@ function executeTest(testPerceptron, dataset_patient_profile)
     if atleastOneTrue==false then print("ATTENTION: all the predictions are FALSE") end
     if atleastOneFalse==false then print("ATTENTION: all the predictions are TRUE") end
 
-   require '../../../torch/metrics_ROC_AUC_computer.lua'
+   require './metrics_ROC_AUC_computer.lua'
    metrics_ROC_AUC_computer(predictionTestVect, truthVect)
 
     local printValues = false
@@ -463,10 +463,17 @@ input_number = (#(train_patient_profile[1][1]))[1]
 
 function train_patient_profile:size() return #train_patient_profile end 
 function validation_patient_profile:size() return #validation_patient_profile end 
-  
-local fileName = "../results/positive_error_progress"..tostring(os.time())..".csv"
-local filePointer = io.open(fileName, "w")  
-local printError = false
+
+local printError = false  
+local fileName = nil
+local filePointer = nil
+if printError == true then 
+  fileName = "./mse_log/positive_error_progress"..tostring(os.time())..".csv" 
+  filePointer = io.open(fileName, "w")  
+end
+
+ 
+
   
 -- OPTIMIZATION LOOPS  
 local MCC_vect = {}  
@@ -615,7 +622,8 @@ for i=1,#modelFileVect do
   -- print("command response: "..res)
 end
 
-
-filePointer:close()
+if printError == true then 
+  filePointer:close()
+end
 
 printTime(timeStart, " complete execution")
