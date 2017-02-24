@@ -25,6 +25,13 @@ Install Torch and luarocks:<br>
 `sudo apt-get -y install luarocks`<br>
 `sudo luarocks install csv`<br>
 
+Move to the project main directory, and download the mesothelioma dataset file from the University of California Irvine Machine Learning Repository:<br>
+`cd /mesothelioma-diagnosis-predictions/` <br>
+`wget https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx` <br>
+
+Remove the spaces from the dataset file name:<br>
+`mv Mesothelioma\ data\ set.xlsx Mesothelioma_data_set.xlsx `
+
 ##Dependency installation for Linux CentOS 7
 <img src="https://daichan.club/wp-content/uploads/2015/08/logo-centos-7.png" width="60" align="right">
 
@@ -56,28 +63,66 @@ Install Torch and luarocks:<br>
 `sudo yum -y install luarocks` <br>
 `sudo luarocks install csv` <br>
 
+Move to the project main directory, and download the mesothelioma dataset file from the University of California Irvine Machine Learning Repository:<br>
+`cd /mesothelioma-diagnosis-predictions/` <br>
+`wget https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx` <br>
+
+Remove the spaces from the dataset file name:<br>
+`mv Mesothelioma\ data\ set.xlsx Mesothelioma_data_set.xlsx `
 
 ##Dependency installation for Mac OS 10
 <img src="https://www.technobuffalo.com/wp-content/uploads/2015/06/Mac-OS-logo.jpg" width="150" align="right">
 
 First of all, update:<br>
+`sudo softwareupdate -iva`<br>
+
+Manually download and install XQuartz from https://www.xquartz.org <br>
+
+`sudo Rscript -e 'install.packages(c(“rgl”, “clusterSim”, “randomForest”), repos="https://cran.rstudio.com")' `<br>
+
+Install rudix:<br>
+`curl -O https://raw.githubusercontent.com/rudix-mac/rpm/2016.12.13/rudix.py`<br>
+`sudo python rudix.py install rudix`<br>
+
+Install the development tools (such as gcc):<br>
+`xcode-select --install`<br>
+
+Install xlsx2csv:<br>
+`sudo easy_install xlsx2csv` <br>
+
+Install Torch and laurocks:<br>
+`git clone https://github.com/torch/distro.git ~/torch --recursive`<br>
+`cd ~/torch; bash install-deps`<br>
+`./install.sh`<br>
+`cd ~`<br>
+`brew install lua`<br>
+`source ~/.profile`<br>
+`sudo luarocks install csv`<br>
+
+Clone this repository:<br>
+`git clone https://github.com/davidechicco/mesothelioma-diagnosis-predictions.git`<br>
+
+Move to the project main directory, and download the mesothelioma dataset file from the University of California Irvine Machine Learning Repository:<br>
+`cd /mesothelioma-diagnosis-predictions/`<br>
+`curl -O 'https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx`<br>
+
+Remove the spaces from the dataset file name:<br>
+`mv Mesothelioma%20data%20set.xlsx Mesothelioma_data_set.xlsx` <br> 
 
 ##Execution for all (Linux Ubuntu, Linux CentOS, and Mac)
-Move to the project main directory, and download the mesothelioma dataset file from the University of California Irvine Machine Learning Repository:<br>
-`cd /mesothelioma-diagnosis-predictions/` <br>
-`wget https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx` <br>
-
-Pre-process the input dataset, normalize it by column, and save it into a .csv file:<br>
-`mkdir models` <br>
-`mkdir mse_logs` <br>
-`mv Mesothelioma\ data\ set.xlsx Mesothelioma_data_set.xlsx` <br>
+Normalize the dataset by column from zero to one:<br>
 `Rscript arrange_mesothelioma_dataset.r Mesothelioma_data_set.xlsx` <br>
 
 Run the artificial neural network Torch code:<br>
 `th mesothelioma_ann_script_val.lua Mesothelioma_data_set_COL_NORM.csv` <br>
 
 Run the random forest R code:<br>
-`Rscript randomForest.r` <br><br>
+`Rscript random_forests.r Mesothelioma_data_set_COL_NORM.csv` <br><br>
+
+##License
+All the software code is licensed under the [GNU General Public License, version 2 (GPLv2)](http://www.gnu.org/licenses/gpl-2.0-standalone.html).
+
+The mesothelioma dataset file is publically available on the website of the [University of California Irvine Machine Learning Repository](http://archive.ics.uci.edu/ml/), under their copyright license.
 
 ##Contacts
 This sofware was developed by [Davide Chicco](http://www.DavideChicco.it) at [the Princess Margaret Cancer Centre](http://www.uhn.ca/PrincessMargaret/Research/) (Toronto, Ontario, Canada).
