@@ -124,7 +124,7 @@ Run the random forest R code:<br>
 ##License
 All the software code is licensed under the [GNU General Public License, version 2 (GPLv2)](http://www.gnu.org/licenses/gpl-2.0-standalone.html).
 
-The mesothelioma dataset file is publically available on the website of the [University of California Irvine Machine Learning Repository](http://archive.ics.uci.edu/ml/), under their copyright license.
+The [mesothelioma dataset file](https://archive.ics.uci.edu/ml/datasets/Mesothelioma%C3%A2%E2%82%AC%E2%84%A2s+disease+data+set+) is publically available on the website of the [University of California Irvine Machine Learning Repository](http://archive.ics.uci.edu/ml/), under their copyright license.
 
 ##Contacts
 This sofware was developed by [Davide Chicco](http://www.DavideChicco.it) at [the Princess Margaret Cancer Centre](http://www.uhn.ca/PrincessMargaret/Research/) (Toronto, Ontario, Canada).
