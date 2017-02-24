@@ -19,7 +19,7 @@ Computational prediction of patients diagnosis and feature selection applied to 
 `sudo apt-get -y install luarocks`<br>
 `sudo luarocks install csv`<br>
 
-`cd /project_mesothelioma/`<br>
+`cd /mesothelioma-diagnosis-predictions/`<br>
 `wget https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx`<br>
 
 `mv Mesothelioma\ data\ set.xlsx Mesothelioma_data_set.xlsx`<br>
@@ -54,7 +54,7 @@ Computational prediction of patients diagnosis and feature selection applied to 
 `sudo yum -y install luarocks` <br>
 `sudo luarocks install csv` <br>
 
-`cd /project_mesothelioma/` <br>
+`cd /mesothelioma-diagnosis-predictions/` <br>
 `wget https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx` <br>
 
 `mkdir models` <br>
