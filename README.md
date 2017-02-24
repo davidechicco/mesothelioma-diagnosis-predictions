@@ -2,6 +2,7 @@
 Computational prediction of patients diagnosis and feature selection applied to a mesothelioma dataset
 
 ##Dependency installation for Linux Ubuntu 12
+<img src="http://www.internetpost.it/wp-content/uploads/2016/04/ubuntu-head.png" width="150" align="right">
 
 First of all, update:<br>
 `sudo apt-get update`<br>
@@ -25,7 +26,9 @@ Install Torch and luarocks:<br>
 `sudo luarocks install csv`<br>
 
 ##Dependency installation for Linux CentOS 7
-First of all, update<br>
+<img src="https://daichan.club/wp-content/uploads/2015/08/logo-centos-7.png" width="60" align="right">
+
+First of all, update:<br>
 `sudo yum -y update`
 
 Install R, its dependencies, and is rgl, clusterSim, randomForest packages:<br>
@@ -55,6 +58,9 @@ Install Torch and luarocks:<br>
 
 
 ##Dependency installation for Mac OS 10
+<img src="https://www.technobuffalo.com/wp-content/uploads/2015/06/Mac-OS-logo.jpg" width="150" align="right">
+
+First of all, update:<br>
 
 ##Execution for all (Linux Ubuntu, Linux CentOS, and Mac)
 Move to the project main directory, and download the mesothelioma dataset file from the University of California Irvine Machine Learning Repository:<br>
