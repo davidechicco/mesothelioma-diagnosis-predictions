@@ -78,6 +78,8 @@ First of all, update:<br>
 
 Manually download and install XQuartz from https://www.xquartz.org <br>
 
+Install R and its packages:
+`brew install r`<br>
 `sudo Rscript -e 'install.packages(c(“rgl”, “clusterSim”, “randomForest”), repos="https://cran.rstudio.com")' `<br>
 
 Install rudix:<br>
