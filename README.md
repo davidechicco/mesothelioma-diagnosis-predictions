@@ -7,7 +7,7 @@ Computational prediction of patients diagnosis and feature selection applied to 
 
 `sudo apt-get -y install r-base-core`<br>
 `sudo apt-get -y install r-cran-rgl`<br>
-`sudo Rscript -e 'install.packages(c(“rgl”, "clusterSim", "randomForest"), repos="https://cran.rstudio.com")'`<br>
+`sudo Rscript -e 'install.packages(c("rgl", "clusterSim", "randomForest"), repos="https://cran.rstudio.com")'`<br>
 `sudo apt-get -y install xlsx2csv`<br>
 
 `sudo apt-get -y install git`<br>
@@ -38,7 +38,7 @@ Computational prediction of patients diagnosis and feature selection applied to 
 `sudo yum -y  install mesa-libGLU` <br>
 `sudo yum -y  install mesa-libGLU-devel` <br>
 `sudo yum -y install libpng-devel` <br>
-`sudo Rscript -e 'install.packages(c(“rgl”, "clusterSim", "randomForest"), repos="https://cran.rstudio.com")'` <br>
+`sudo Rscript -e 'install.packages(c("rgl", "clusterSim", "randomForest"), repos="https://cran.rstudio.com")'` <br>
 
 `sudo yum -y install python` <br>
 `sudo yum -y install epel-release` <br>
