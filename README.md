@@ -79,4 +79,7 @@ Run the artificial neural network Torch code:<br>
 Run the random forest R code:<br>
 `Rscript randomForest.r` <br><br>
 
-( For questions or help, please write to davide.chicco(AT)davidechicco.it )
+##Contacts
+This sofware was developed by [Davide Chicco](http://www.DavideChicco.it) at [the Princess Margaret Cancer Centre](http://www.uhn.ca/PrincessMargaret/Research/) (Toronto, Ontario, Canada).
+
+For questions or help, please write to davide.chicco(AT)davidechicco.it
