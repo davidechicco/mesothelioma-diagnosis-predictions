@@ -1,7 +1,7 @@
 # Computational prediction of patients diagnosis and feature selection applied to a mesothelioma dataset
 Computational prediction of patients diagnosis and feature selection applied to a mesothelioma dataset
 
-##Instructions for Linux Ubuntu 12
+##Dependency installation for Linux Ubuntu 12
 
 `sudo apt-get update`<br>
 
@@ -19,17 +19,7 @@ Computational prediction of patients diagnosis and feature selection applied to 
 `sudo apt-get -y install luarocks`<br>
 `sudo luarocks install csv`<br>
 
-`cd /mesothelioma-diagnosis-predictions/`<br>
-`wget https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx`<br>
-
-`mv Mesothelioma\ data\ set.xlsx Mesothelioma_data_set.xlsx`<br>
-`Rscript arrange_mesothelioma_dataset.r Mesothelioma_data_set.xlsx`<br>
-`th mesothelioma_ann_script_val.lua Mesothelioma_data_set_COL_NORM.csv`<br>
-`Rscript randomForest.r`<br>
-
-
-
-##Instructions for Linux CentOS 7
+##Dependency installation for Linux CentOS 7
 `sudo yum -y update`
 
 `sudo yum -y install R` <br>
@@ -54,6 +44,10 @@ Computational prediction of patients diagnosis and feature selection applied to 
 `sudo yum -y install luarocks` <br>
 `sudo luarocks install csv` <br>
 
+
+##Dependency installation for Mac OS 10
+
+##Execution for all (Linux Ubuntu, Linux CentOS, and Mac)
 `cd /mesothelioma-diagnosis-predictions/` <br>
 `wget https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx` <br>
 
@@ -63,5 +57,3 @@ Computational prediction of patients diagnosis and feature selection applied to 
 `Rscript arrange_mesothelioma_dataset.r Mesothelioma_data_set.xlsx` <br>
 `th mesothelioma_ann_script_val.lua Mesothelioma_data_set_COL_NORM.csv` <br>
 `Rscript randomForest.r` <br>
-
-
