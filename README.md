@@ -22,6 +22,9 @@ Install Torch and luarocks:<br>
 `cd ~/torch; bash install-deps;`<br>
 `./install.sh`<br>
 
+`source ~/.bashrc`<br>
+`cd ~`<br>
+
 `sudo apt-get -y install luarocks`<br>
 `sudo luarocks install csv`<br>
 
@@ -60,6 +63,9 @@ Install Torch and luarocks:<br>
 `cd ~/torch; bash install-deps;` <br>
 `./install.sh` <br>
 
+`source ~/.bashrc`<br>
+`cd ~`<br>
+
 `sudo yum -y install luarocks` <br>
 `sudo luarocks install csv` <br>
 
@@ -97,6 +103,7 @@ Install Torch and laurocks:<br>
 `cd ~/torch; bash install-deps`<br>
 `./install.sh`<br>
 `cd ~`<br>
+
 `brew install lua`<br>
 `source ~/.profile`<br>
 `sudo luarocks install csv`<br>
