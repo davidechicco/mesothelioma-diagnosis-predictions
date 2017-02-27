@@ -28,6 +28,9 @@ Install Torch and luarocks:<br>
 `sudo apt-get -y install luarocks`<br>
 `sudo luarocks install csv`<br>
 
+Clone this repository:<br>
+`git clone https://github.com/davidechicco/mesothelioma-diagnosis-predictions.git`<br>
+
 Move to the project main directory, and download the mesothelioma dataset file:<br>
 `cd /mesothelioma-diagnosis-predictions/` <br>
 `wget https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx` <br>
@@ -68,6 +71,9 @@ Install Torch and luarocks:<br>
 
 `sudo yum -y install luarocks` <br>
 `sudo luarocks install csv` <br>
+
+Clone this repository:<br>
+`git clone https://github.com/davidechicco/mesothelioma-diagnosis-predictions.git`<br>
 
 Move to the project main directory, and download the mesothelioma dataset file:<br>
 `cd /mesothelioma-diagnosis-predictions/` <br>
