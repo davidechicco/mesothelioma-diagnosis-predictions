@@ -4,8 +4,10 @@ Computational prediction of patients diagnosis and feature selection applied to 
 ##Installation
 To run the scripts, you need to have installed:
 * R
+* R packages clusterSim and randomForest
 * Python
-* xlsx2csv
+* Python package xlsx2csv
+* Git
 * Torch
 
 You need to have root privileges, an internet connection, and at least 1 GB of free space on your hard disk. We here provide the instructions to install all the needed programs and dependencies on Linux CentOS, Linux Ubuntu, and Mac OS. Our scripts were originally developed on a Linux Ubuntu computer.
