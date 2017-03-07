@@ -3,20 +3,20 @@ Computational prediction of patients diagnosis and feature selection applied to 
 
 ##Installation
 To run the scripts, you need to have installed:
-* R
+* R (version 3.3.2)
 * R packages clusterSim and randomForest
-* Python
+* Python (version 2.7.5)
 * Python package xlsx2csv
-* Git
-* Torch
+* git (version 1.8.3.1)
+* Torch (version 7)
 
 You need to have root privileges, an internet connection, and at least 1 GB of free space on your hard disk. We here provide the instructions to install all the needed programs and dependencies on Linux CentOS, Linux Ubuntu, and Mac OS. Our scripts were originally developed on a Linux Ubuntu computer.
 
 ###Dependency installation for Linux Ubuntu
 <img src="http://www.internetpost.it/wp-content/uploads/2016/04/ubuntu-head.png" width="150" align="right">
-Here are the instructions to install all the programs and libraries needed by our scripts on a Linux Ubuntu computer, from a shell terminal. We tested these instructions on a Dell Latitude 3540 laptop running Linux Ubuntu 16.10 operating system, in February 2017. If you are using another operating system version, some instructions might be slightly different.
+Here are the instructions to install all the programs and libraries needed by our scripts on a Linux Ubuntu computer, from a shell terminal. We tested these instructions on a Dell Latitude 3540 laptop, running Linux Ubuntu 16.10 operating system, and having a 64-bit kernel, in February 2017. If you are using another operating system version, some instructions might be slightly different.
 
-First of all, update:<br>
+(Optional) First of all, update:<br>
 `sudo apt-get update`<br>
 
 Install R and its rgl, clusterSim, randomForest packages:<br>
@@ -52,9 +52,9 @@ Remove the spaces from the dataset file name:<br>
 
 ###Dependency installation for Linux CentOS
 <img src="https://daichan.club/wp-content/uploads/2015/08/logo-centos-7.png" width="60" align="right">
-Here are the instructions to install all the programs and libraries needed by our scripts on a Linux CentOS computer, from a shell terminal. We tested these instructions on a Dell Latitude 3540 laptop running Linux CentOS 7.2.1511 operating system, in February 2017. If you are using another operating system version, some instructions might be slightly different.
+Here are the instructions to install all the programs and libraries needed by our scripts on a Linux CentOS computer, from a shell terminal. We tested these instructions on a Dell Latitude 3540 laptop, running Linux Ubuntu 16.10 operating system, and having a 64-bit kernel, in February 2017. If you are using another operating system version, some instructions might be slightly different.
 
-First of all, update:<br>
+(Optional) First of all, update:<br>
 `sudo yum -y update`
 
 Install R, its dependencies, and is rgl, clusterSim, randomForest packages:<br>
@@ -99,12 +99,12 @@ Remove the spaces from the dataset file name:<br>
 <img src="https://www.technobuffalo.com/wp-content/uploads/2015/06/Mac-OS-logo.jpg" width="150" align="right">
 Here are the instructions to install all the programs and libraries needed by our scripts on a Mac computer, from a shell terminal. We tested these instructions on an Apple computer running a Mac OS macOS 10.12.2 Sierra operating system, in March 2017. If you are using another operating system version, some instructions might be slightly different.
 
-First of all, update:<br>
+(Optional) First of all, update:<br>
 `sudo softwareupdate -iva`<br>
 
 Manually download and install XQuartz from https://www.xquartz.org <br>
 
-Install R and its packages:
+Install R and its packages:<br>
 `brew install r`<br>
 `sudo Rscript -e 'install.packages(c("rgl”, "clusterSim”, "randomForest”), repos="https://cran.rstudio.com")' `<br>
 
@@ -133,7 +133,7 @@ Clone this repository:<br>
 
 Move to the project main directory, and download the mesothelioma dataset file:<br>
 `cd /mesothelioma-diagnosis-predictions/`<br>
-`curl -O 'https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx`<br>
+`curl -O 'https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx'`<br>
 
 Remove the spaces from the dataset file name:<br>
 `mv Mesothelioma%20data%20set.xlsx Mesothelioma_data_set.xlsx` <br> 
