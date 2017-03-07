@@ -4,7 +4,7 @@ Computational prediction of patients diagnosis and feature selection applied to 
 ##Installation
 To run the scripts, you need to have installed:
 * **R** (version 3.3.2)
-* R packages **clusterSim** and **randomForest**
+* R packages **rgl**, **clusterSim** and **randomForest**
 * **Python** (version 2.7.5)
 * Python package **xlsx2csv**
 * **git** (version 1.8.3.1)
