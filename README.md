@@ -139,7 +139,7 @@ Move to the project main directory, and download the mesothelioma dataset file:<
 Remove the spaces from the dataset file name:<br>
 `mv Mesothelioma%20data%20set.xlsx Mesothelioma_data_set.xlsx` <br> 
 
-##Execution for all (Linux Ubuntu, Linux CentOS, and Mac)
+## Execution for all (Linux Ubuntu, Linux CentOS, and Mac)
 Normalize the dataset by column from zero to one:<br>
 `Rscript arrange_mesothelioma_dataset.r Mesothelioma_data_set.xlsx` <br>
 
