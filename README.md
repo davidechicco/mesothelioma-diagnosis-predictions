@@ -1,7 +1,7 @@
 # Computational prediction of patients diagnosis and feature selection applied to a mesothelioma dataset
 Computational prediction of patients diagnosis and feature selection applied to a mesothelioma dataset
 
-##Installation
+## Installation
 To run the scripts, you need to have installed:
 * **R** (version 3.3.2)
 * R packages **rgl**, **clusterSim** and **randomForest**
@@ -13,7 +13,7 @@ To run the scripts, you need to have installed:
 
 You need to have root privileges, an internet connection, and at least 1 GB of free space on your hard disk. We here provide the instructions to install all the needed programs and dependencies on Linux CentOS, Linux Ubuntu, and Mac OS. Our scripts were originally developed on a Linux Ubuntu computer.
 
-###Dependency installation for Linux Ubuntu
+### Dependency installation for Linux Ubuntu
 <img src="http://www.internetpost.it/wp-content/uploads/2016/04/ubuntu-head.png" width="150" align="right">
 Here are the instructions to install all the programs and libraries needed by our scripts on a Linux Ubuntu computer, from a shell terminal. We tested these instructions on a Dell Latitude 3540 laptop, running Linux Ubuntu 16.10 operating system, and having a 64-bit kernel, in February 2017. If you are using another operating system version, some instructions might be slightly different.
 
@@ -51,7 +51,7 @@ Move to the project main directory, and download the mesothelioma dataset file:<
 Remove the spaces from the dataset file name:<br>
 `mv Mesothelioma\ data\ set.xlsx Mesothelioma_data_set.xlsx `
 
-###Dependency installation for Linux CentOS
+### Dependency installation for Linux CentOS
 <img src="https://daichan.club/wp-content/uploads/2015/08/logo-centos-7.png" width="60" align="right">
 Here are the instructions to install all the programs and libraries needed by our scripts on a Linux CentOS computer, from a shell terminal. We tested these instructions on a Dell Latitude 3540 laptop, running Linux Ubuntu 16.10 operating system, and having a 64-bit kernel, in February 2017. If you are using another operating system version, some instructions might be slightly different.
 
@@ -96,7 +96,7 @@ Move to the project main directory, and download the mesothelioma dataset file:<
 Remove the spaces from the dataset file name:<br>
 `mv Mesothelioma\ data\ set.xlsx Mesothelioma_data_set.xlsx `
 
-###Dependency installation for Mac OS
+### Dependency installation for Mac OS
 <img src="https://www.technobuffalo.com/wp-content/uploads/2015/06/Mac-OS-logo.jpg" width="150" align="right">
 Here are the instructions to install all the programs and libraries needed by our scripts on a Mac computer, from a shell terminal. We tested these instructions on an Apple computer running a Mac OS macOS 10.12.2 Sierra operating system, in March 2017. If you are using another operating system version, some instructions might be slightly different.
 
@@ -149,13 +149,13 @@ Run the artificial neural network Torch code:<br>
 Run the random forest R code:<br>
 `Rscript random_forests.r Mesothelioma_data_set_COL_NORM.csv` <br><br>
 
-##License
+## License
 All the software code is licensed under the [GNU General Public License, version 2 (GPLv2)](http://www.gnu.org/licenses/gpl-2.0-standalone.html).
 The [metrics](https://github.com/hpenedones/metrics) package was developed and released by hpdenedones under the same GPLv2 license. The [weight-init.lua](https://github.com/e-lab/torch-toolbox) file was developed and released by e-lab under the same GPLv2 license
 
 The [mesothelioma dataset file](https://archive.ics.uci.edu/ml/datasets/Mesothelioma%C3%A2%E2%82%AC%E2%84%A2s+disease+data+set+) is publically available on the website of the [University of California Irvine Machine Learning Repository](http://archive.ics.uci.edu/ml/), under their copyright license.
 
-##Contacts
+## Contacts
 This sofware was developed by [Davide Chicco](http://www.DavideChicco.it) at [the Princess Margaret Cancer Centre](http://www.uhn.ca/PrincessMargaret/Research/) (Toronto, Ontario, Canada).
 
 For questions or help, please write to davide.chicco(AT)davidechicco.it
