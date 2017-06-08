@@ -59,11 +59,16 @@ function executeTest(testPerceptron, dataset_patient_profile)
 
     for i=1,#dataset_patient_profile do
       local current_label = dataset_patient_profile[i][2][1]
-      local prediction = testPerceptron:forward(dataset_patient_profile[i][1])[1]
+      local original_prediction = testPerceptron:forward(dataset_patient_profile[i][1])[1]
 
-      prediction = (prediction+1)/2      
+      prediction = (original_prediction+1)/2      
       predictionTestVect[i] = prediction
-      truthVect[i] = current_label      
+      truthVect[i] = current_label  
+      
+--       io.write(" original = ".. round(original_prediction,2))
+--       io.write(" prediction = ".. round(prediction,2))
+--       io.write(" current_label = ".. current_label.."\n")
+--       io.flush()
 
       local labelResult = false      
       if current_label >= THRESHOLD and prediction >= THRESHOLD  then
@@ -240,11 +245,11 @@ function confusion_matrix(predictionTestVect, truthVect, threshold, printValues)
       end
 	
       
-      local totalRate = 0
-      if MatthewsCC > -2 and f1_score > -2 then 
-	totalRate = MatthewsCC + accuracy + f1_score 
-	print("total rate = "..round(totalRate,2).." in [-1, +3] that is "..round((totalRate+1)*100/4,2).."% of possible correctness");
-      end
+--       local totalRate = 0
+--       if MatthewsCC > -2 and f1_score > -2 then 
+-- 	totalRate = MatthewsCC + accuracy + f1_score 
+-- 	print("total rate = "..round(totalRate,2).." in [-1, +3] that is "..round((totalRate+1)*100/4,2).."% of possible correctness");
+--       end
       
 --       local numberOfPredictedOnes = tp + fp;
 --       print("numberOfPredictedOnes = (TP + FP) = "..comma_value(numberOfPredictedOnes).." = "..round(numberOfPredictedOnes*100/(tp + tn + fn + fp),2).."%");
@@ -272,6 +277,7 @@ end
 function permute(tab, n, count)
       n = n or #tab
       for i = 1, count or n do
+	math.randomseed(os.time())
         local j = math.random(i, n)
         tab[i], tab[j] = tab[j], tab[i]
       end
