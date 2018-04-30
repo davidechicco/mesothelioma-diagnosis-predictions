@@ -1,7 +1,7 @@
 
 
 print('\n\n @ @ @ @ @ @ START @ @ @ @ @ @ @ ');
-print('file: script_start.lua');
+print('file: mesothelioma_ann_script_start.lua');
 print('author Davide Chicco <davide.chicco@gmail.com>');
 print(os.date("%c", os.time()));
 
@@ -41,7 +41,7 @@ function createPerceptron(this_input_number, this_hidden_units, this_hidden_laye
 
   if XAVIER_INITIALIZATION==true then 
     print("XAVIER_INITIALIZATION = "..tostring(XAVIER_INITIALIZATION))
-    perceptron = require("./weight-init.lua")(perceptron,  'xavier') -- XAVIER
+    perceptron = require("../../Neuroblastoma/src/lib/weight-init.lua")(perceptron,  'xavier') -- XAVIER
   end
 
   return perceptron;
@@ -59,16 +59,11 @@ function executeTest(testPerceptron, dataset_patient_profile)
 
     for i=1,#dataset_patient_profile do
       local current_label = dataset_patient_profile[i][2][1]
-      local original_prediction = testPerceptron:forward(dataset_patient_profile[i][1])[1]
+      local prediction = testPerceptron:forward(dataset_patient_profile[i][1])[1]
 
-      prediction = (original_prediction+1)/2      
+      prediction = (prediction+1)/2      
       predictionTestVect[i] = prediction
-      truthVect[i] = current_label  
-      
---       io.write(" original = ".. round(original_prediction,2))
---       io.write(" prediction = ".. round(prediction,2))
---       io.write(" current_label = ".. current_label.."\n")
---       io.flush()
+      truthVect[i] = current_label      
 
       local labelResult = false      
       if current_label >= THRESHOLD and prediction >= THRESHOLD  then
@@ -245,11 +240,11 @@ function confusion_matrix(predictionTestVect, truthVect, threshold, printValues)
       end
 	
       
---       local totalRate = 0
---       if MatthewsCC > -2 and f1_score > -2 then 
--- 	totalRate = MatthewsCC + accuracy + f1_score 
--- 	print("total rate = "..round(totalRate,2).." in [-1, +3] that is "..round((totalRate+1)*100/4,2).."% of possible correctness");
---       end
+      local totalRate = 0
+      if MatthewsCC > -2 and f1_score > -2 then 
+	totalRate = MatthewsCC + accuracy + f1_score 
+	print("total rate = "..round(totalRate,2).." in [-1, +3] that is "..round((totalRate+1)*100/4,2).."% of possible correctness");
+      end
       
 --       local numberOfPredictedOnes = tp + fp;
 --       print("numberOfPredictedOnes = (TP + FP) = "..comma_value(numberOfPredictedOnes).." = "..round(numberOfPredictedOnes*100/(tp + tn + fn + fp),2).."%");
@@ -277,7 +272,6 @@ end
 function permute(tab, n, count)
       n = n or #tab
       for i = 1, count or n do
-	math.randomseed(os.time())
         local j = math.random(i, n)
         tab[i], tab[j] = tab[j], tab[i]
       end
@@ -298,7 +292,9 @@ local profile_vett = {}
 
 
 local csv = require("csv")
-local fileName = tostring(arg[1])
+local fileName = tostring("../data/MesotheliomaDataSet_original_COL_NORM_34features.csv")
+
+-- local fileName = tostring(arg[1])
 --"../data/MesotheliomaDataSet_DicleUniversity_NORMALIZED.csv" 
 -- MesotheliomaDataSet_original_COL_NORM.csv
 
@@ -332,12 +328,12 @@ local output_number = 1
 THRESHOLD = 0.5 -- ORIGINAL
 -- THRESHOLD = 0.1529
 XAVIER_INITIALIZATION = false
-DROPOUT_FLAG = true 
+DROPOUT_FLAG = false 
 MOMENTUM_ALPHA = 0.5
 
-MOMENTUM = true
-LEARN_RATE = 0.01 -- best is 0.01
-ITERATIONS = 200 -- best is 200
+MOMENTUM = false
+LEARN_RATE = 0.1 -- best is 0.01
+ITERATIONS = 2000 -- best is 200
 local hidden_units = 50 -- best is 50
 
 -- LEARN_RATE = 0.01
@@ -426,8 +422,26 @@ local validation_set_size = round((VALIDATION_SET_PERC*(#patients_vett-TEST_SET_
 
 print("training_set_size = "..((#patients_vett-TEST_SET_SIZE)-validation_set_size).." elements");
 print("validation_set_size = "..validation_set_size.." elements\n");
-
 print("TEST_SET_SIZE = "..TEST_SET_SIZE.." elements\n");
+
+
+
+-- TRAINING_SET_PERC = 60
+-- VALIDATION_SET_PERC = 20
+-- TEST_SET_PERC = 20
+-- 
+-- local training_set_size = round((TRAINING_SET_PERC*(#patients_vett)/100))
+-- local validation_set_size = round((VALIDATION_SET_PERC*(#patients_vett)/100))
+-- TEST_SET_SIZE = (#patients_vett) - TRAINING_SET_PERC - VALIDATION_SET_PERC
+-- 
+-- print("training_set_size = "..training_set_size.." elements");
+-- print("validation_set_size = "..validation_set_size.." elements\n");
+-- print("TEST_SET_SIZE = "..TEST_SET_SIZE.." elements\n");
+
+
+
+
+
 print("#patients_vett = "..#patients_vett);
 
 -- os.exit()
@@ -469,17 +483,10 @@ input_number = (#(train_patient_profile[1][1]))[1]
 
 function train_patient_profile:size() return #train_patient_profile end 
 function validation_patient_profile:size() return #validation_patient_profile end 
-
-local printError = false  
-local fileName = nil
-local filePointer = nil
-if printError == true then 
-  fileName = "./mse_log/positive_error_progress"..tostring(os.time())..".csv" 
-  filePointer = io.open(fileName, "w")  
-end
-
- 
-
+  
+local fileName = "../results/positive_error_progress"..tostring(os.time())..".csv"
+local filePointer = io.open(fileName, "w")  
+local printError = false
   
 -- OPTIMIZATION LOOPS  
 local MCC_vect = {}  
@@ -492,7 +499,7 @@ for b=1,#hiddenLayerVect do
     
     local hidden_units = hiddenUnitVect[a]
     local hidden_layers = hiddenLayerVect[b]
-    print("$$$ hidden_units = "..hidden_units.."\t hidden_layers = "..hidden_layers.." $$$")
+    print("\n\n\n$$$ hidden_units = "..hidden_units.."\t hidden_layers = "..hidden_layers.." $$$")
     
     local perceptron = createPerceptron(input_number, hidden_units, hidden_layers, output_number)
 
@@ -537,13 +544,16 @@ for b=1,#hiddenLayerVect do
 		local thisProfile = train_patient_profile[k][1]
 		local thisLabel = train_patient_profile[k][2]
 
-		local thisPrediction = perceptron:forward(thisProfile)
+		local thisPrediction = perceptron:forward(thisProfile)		
+		
+		
+		thisPrediction = (thisPrediction+1)/2 -- [-1,+1] -> [0,1]
+		
 		local loss = criterion:forward(thisPrediction, thisLabel)
 		
-		-- [-1,+1] -> [0,1]
-		thisPrediction = (thisPrediction+1)/2
-		
-		-- print("thisPrediction = "..round(thisPrediction[1],2).." thisLabel = "..thisLabel[1])
+		if hidden_units == 100 then
+		  print("thisPrediction = "..round(thisPrediction[1],2).." thisLabel = "..thisLabel[1].."\tloss = "..loss)
+		end
 		
 		lossSum = lossSum + loss
 		error_progress = lossSum*100 / (loopIterations*MAX_MSE)
@@ -560,7 +570,7 @@ for b=1,#hiddenLayerVect do
 		
 		if ((loopIterations*100/total_runs)*10)%100==0 then
 		  io.write("completion: ", round((loopIterations*100/total_runs),2).."%" )
-		  io.write(" (epoch="..epoch..")(element="..k..") loss = "..round(loss,2).." ")      
+		  io.write(" (epoch="..epoch..")(element="..k..") loss = "..round(loss,3).." ")      
 		  io.write("\terror progress = "..round(error_progress,5).."%\n")
 		end
 		if printError== true then
@@ -628,8 +638,7 @@ for i=1,#modelFileVect do
   -- print("command response: "..res)
 end
 
-if printError == true then 
-  filePointer:close()
-end
+
+filePointer:close()
 
 printTime(timeStart, " complete execution")
