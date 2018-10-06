@@ -5,7 +5,7 @@ Computational prediction of patients diagnosis and feature selection applied to 
 To run the scripts, you need to have installed:
 * **R** (version 3.3.2)
 * R packages **rgl**, **clusterSim** and **randomForest**
-* **Python** (version 2.7.5)
+* **Python** (version 3)
 * Python package **xlsx2csv**
 * **git** (version 1.8.3.1)
 * **Torch** (version 7)
@@ -40,16 +40,6 @@ Install Torch and luarocks:<br>
 
 `sudo apt-get -y install luarocks`<br>
 `sudo luarocks install csv`<br>
-
-Clone this repository:<br>
-`git clone https://github.com/davidechicco/mesothelioma-diagnosis-predictions.git`<br>
-
-Move to the project main directory, and download the mesothelioma dataset file:<br>
-`cd /mesothelioma-diagnosis-predictions/` <br>
-`wget https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx` <br>
-
-Remove the spaces from the dataset file name:<br>
-`mv Mesothelioma\ data\ set.xlsx Mesothelioma_data_set.xlsx `
 
 ### Dependency installation for Linux CentOS
 <img src="http://brettspence.com/wp-content/uploads/2014/11/centos-7-logo-580x118.jpg" width="100" align="right">
@@ -86,15 +76,6 @@ Install Torch and luarocks:<br>
 `sudo yum -y install luarocks` <br>
 `sudo luarocks install csv` <br>
 
-Clone this repository:<br>
-`git clone https://github.com/davidechicco/mesothelioma-diagnosis-predictions.git`<br>
-
-Move to the project main directory, and download the mesothelioma dataset file:<br>
-`cd /mesothelioma-diagnosis-predictions/` <br>
-`wget https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx` <br>
-
-Remove the spaces from the dataset file name:<br>
-`mv Mesothelioma\ data\ set.xlsx Mesothelioma_data_set.xlsx `
 
 ### Dependency installation for Mac OS
 <img src="https://www.technobuffalo.com/wp-content/uploads/2015/06/Mac-OS-logo.jpg" width="150" align="right">
@@ -129,15 +110,12 @@ Install Torch and laurocks:<br>
 `source ~/.profile`<br>
 `sudo luarocks install csv`<br>
 
-Clone this repository:<br>
-`git clone https://github.com/davidechicco/mesothelioma-diagnosis-predictions.git`<br>
+### Dataset preparation
 
-Move to the project main directory, and download the mesothelioma dataset file:<br>
-`cd /mesothelioma-diagnosis-predictions/`<br>
-`curl -O 'https://archive.ics.uci.edu/ml/machine-learning-databases/00351/Mesothelioma%20data%20set.xlsx'`<br>
+Move to the project main directory, then use the script to download the mesothelioma dataset file, normalize the columns, and remove the "diagnosis method" feature (that is a duplicate of the target feature "class of diagnosis"):<br>
+`cd /mesothelioma-diagnosis-predictions/` <br>
+`./script_prepare_dataset.sh` <br>
 
-Remove the spaces from the dataset file name:<br>
-`mv Mesothelioma%20data%20set.xlsx Mesothelioma_data_set.xlsx` <br> 
 
 ## Execution for all (Linux Ubuntu, Linux CentOS, and Mac)
 Normalize the dataset by column from zero to one:<br>
