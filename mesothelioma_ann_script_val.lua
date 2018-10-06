@@ -292,7 +292,7 @@ local profile_vett = {}
 
 
 local csv = require("csv")
-local fileName = tostring("../data/MesotheliomaDataSet_original_COL_NORM_34features.csv")
+local fileName = tostring("./Mesothelioma_data_set_COL_NORM.csv")
 
 -- local fileName = tostring(arg[1])
 --"../data/MesotheliomaDataSet_DicleUniversity_NORMALIZED.csv" 
@@ -415,10 +415,11 @@ local indexVect = {};
 for i=1, #patients_vett do indexVect[i] = i;  end
 permutedIndexVect = permute(indexVect, #indexVect, #indexVect);
 
-VALIDATION_SET_PERC = 20
-TEST_SET_SIZE = 100
+-- VALIDATION_SET_PERC = 20
+TEST_SET_SIZE = 65
 
-local validation_set_size = round((VALIDATION_SET_PERC*(#patients_vett-TEST_SET_SIZE))/100)
+local validation_set_size = 65
+-- round((VALIDATION_SET_PERC*(#patients_vett-TEST_SET_SIZE))/100)
 
 print("training_set_size = "..((#patients_vett-TEST_SET_SIZE)-validation_set_size).." elements");
 print("validation_set_size = "..validation_set_size.." elements\n");
@@ -551,9 +552,9 @@ for b=1,#hiddenLayerVect do
 		
 		local loss = criterion:forward(thisPrediction, thisLabel)
 		
-		if hidden_units == 100 then
-		  print("thisPrediction = "..round(thisPrediction[1],2).." thisLabel = "..thisLabel[1].."\tloss = "..loss)
-		end
+		-- if hidden_units == 100 then
+		--   print("thisPrediction = "..round(thisPrediction[1],2).." thisLabel = "..thisLabel[1].."\tloss = "..loss)
+		-- end
 		
 		lossSum = lossSum + loss
 		error_progress = lossSum*100 / (loopIterations*MAX_MSE)
