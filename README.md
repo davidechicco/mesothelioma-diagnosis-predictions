@@ -118,13 +118,21 @@ Move to the project main directory, then use the script to download the mesothel
 
 
 ## Execution for all (Linux Ubuntu, Linux CentOS, and Mac)
-Normalize the dataset by column from zero to one:<br>
-`Rscript arrange_mesothelioma_dataset.r Mesothelioma_data_set.xlsx` <br>
 
-Run the artificial neural network Torch code:<br>
+### Diagnosis prediction
+
+To run the Torch software of the perceptron-based artificial neural network:<br>
 `th mesothelioma_ann_script_val.lua Mesothelioma_data_set_COL_NORM.csv` <br>
 
-Run the random forest R code:<br>
+To run the Python 3 software of the probabilistic neural network:<br>
+`python3 pnn_mesothelioma_initial_py3.py` <br>
+
+To run the R software of the random forest classifier:<br>
+`Rscript random_forests_class.r`
+
+### Feature selection
+
+To run the random forest R code for feature selection:<br>
 `Rscript random_forests.r Mesothelioma_data_set_COL_NORM.csv` <br><br>
 
 ## License
@@ -134,6 +142,6 @@ The [metrics](https://github.com/hpenedones/metrics) package was developed and r
 The [mesothelioma dataset file](https://archive.ics.uci.edu/ml/datasets/Mesothelioma%C3%A2%E2%82%AC%E2%84%A2s+disease+data+set+) is publically available on the website of the [University of California Irvine Machine Learning Repository](http://archive.ics.uci.edu/ml/), under their copyright license.
 
 ## Contacts
-This sofware was developed by [Davide Chicco](http://www.DavideChicco.it) at the [Princess Margaret Cancer Centre](http://www.uhn.ca/PrincessMargaret/Research/) and at the at the [Peter Munk Cardiac Centre](https://www.uhn.ca/PMCC/Research/Pages/default.aspx) (Toronto, Ontario, Canada).
+This sofware was developed by [Davide Chicco](http://www.DavideChicco.it) at the [Princess Margaret Cancer Centre](http://www.uhn.ca/PrincessMargaret/Research/) and at the [Peter Munk Cardiac Centre](https://www.uhn.ca/PMCC/Research/Pages/default.aspx) (Toronto, Ontario, Canada).
 
-For questions or help, please write to davide.chicco(AT)davidechicco.it
+For questions or help, please write to davidechicco(AT)davidechicco.it
