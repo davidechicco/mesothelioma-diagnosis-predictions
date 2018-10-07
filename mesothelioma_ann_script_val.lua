@@ -342,10 +342,10 @@ local hidden_units = 50 -- best is 50
 -- ITERATIONS = 200
 
 -- local hidden_layers = 1 -- best is 1
-local hiddenUnitVect = {25,50,75,100,125,150,175,200,225,250,275,300}
--- {2000, 4000, 6000, 8000, 10000}
-local hiddenLayerVect = {1}
--- local hiddenLayerVect = {1}
+-- local hiddenUnitVect = {25,50,75,100,125,150,175,200,225,250,275,300}
+local hiddenUnitVect = {5, 10, 25, 35, 50, 75, 100}
+local hiddenLayerVect = {1, 2, 3}
+-- local hiddenLayerVect = {1,2,3,4,5}
 
 local max_values = {}
 
