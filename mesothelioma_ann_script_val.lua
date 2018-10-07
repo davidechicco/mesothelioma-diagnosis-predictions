@@ -243,7 +243,7 @@ function confusion_matrix(predictionTestVect, truthVect, threshold, printValues)
       local totalRate = 0
       if MatthewsCC > -2 and f1_score > -2 then 
 	totalRate = MatthewsCC + accuracy + f1_score 
-	print("total rate = "..round(totalRate,2).." in [-1, +3] that is "..round((totalRate+1)*100/4,2).."% of possible correctness");
+	-- print("total rate = "..round(totalRate,2).." in [-1, +3] that is "..round((totalRate+1)*100/4,2).."% of possible correctness");
       end
       
 --       local numberOfPredictedOnes = tp + fp;
@@ -389,7 +389,7 @@ end
 
 print("Number of value profiles (rows) = "..#profile_vett_data);
 print("Number features (columns) = "..#(profile_vett_data[1]));
-print("Number of targets (rows) = "..#label_vett);
+print("Number of data instances (rows) = "..#label_vett);
 
 if NORMALIZATION==true and #max_values ~= #(profile_vett_data[1]) then
   print("Error: different number of max_values and features. The program will stop");
@@ -640,6 +640,6 @@ for i=1,#modelFileVect do
 end
 
 
-filePointer:close()
+-- filePointer:close()
 
 printTime(timeStart, " complete execution")
