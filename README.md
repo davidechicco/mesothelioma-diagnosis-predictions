@@ -147,4 +147,4 @@ The [mesothelioma dataset file](https://archive.ics.uci.edu/ml/datasets/Mesothel
 ## Contacts
 This sofware was developed by [Davide Chicco](http://www.DavideChicco.it) at the [Princess Margaret Cancer Centre](http://www.uhn.ca/PrincessMargaret/Research/) and at the [Peter Munk Cardiac Centre](https://www.uhn.ca/PMCC/Research/Pages/default.aspx) (Toronto, Ontario, Canada).
 
-For questions or help, please write to davidechicco(AT)davidechicco.it
+For questions or help, please write to [davidechicco(AT)davidechicco.it](http://www.DavideChicco.it)
