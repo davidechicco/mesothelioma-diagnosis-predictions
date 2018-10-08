@@ -5,7 +5,7 @@ Computational prediction of patients diagnosis and feature selection applied to 
 To run the scripts, you need to have installed:
 * **R** (version 3.3.2)
 * R packages **rgl**, **clusterSim** and **randomForest**
-* **Python** (version 3)
+* **Python 3**
 * Python package **xlsx2csv**
 * **git** (version 1.8.3.1)
 * **Torch** (version 7)
@@ -129,6 +129,9 @@ To run the Python 3 software of the probabilistic neural network:<br>
 
 To run the R software of the random forest classifier:<br>
 `Rscript random_forests_class.r`
+
+To run the R software of the CART classifier:<br>
+`Rscript cart.r`
 
 ### Feature selection
 
