@@ -10,7 +10,7 @@ from neupy.algorithms import PNN
 import time
 start = time.time()
 
-fileName="../data/MesotheliomaDataSet_original_COL_NORM_34features.csv"
+fileName="./Mesothelioma_data_set_COL_NORM.csv"
 TARGET_COLUMN=34
 
 # fileName="./MesotheliomaDataSet_DicleUniversity_NORMALIZED_withoutDiagnosisMethod.csv"

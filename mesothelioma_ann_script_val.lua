@@ -238,6 +238,22 @@ function confusion_matrix(predictionTestVect, truthVect, threshold, printValues)
       else
 	print("f1_score CANNOT be computed because (tp+fp+fn)==0")    
       end
+      
+      local tp_rate = -2
+      if (tp+fn)>0 then   
+	tp_rate = (tp) / (tp+fn)
+	print("TP rate = "..round(tp_rate,2).." = TP rate = tp / (tp+fn) \t [worst = 0, best = 1]");
+      else
+	print("TP rate CANNOT be computed because (tp+fn)==0")    
+      end
+      
+      local tn_rate = -2
+      if (tn+fp)>0 then   
+	tn_rate = (tn) / (tn+fp)
+	print("TN rate = "..round(tn_rate,2).." = TN rate = tn / (tn+fp) \t [worst = 0, best = 1]");
+      else
+	print("TN rate CANNOT be computed because (tn+fp)==0")    
+      end
 	
       
       local totalRate = 0

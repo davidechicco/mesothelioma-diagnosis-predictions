@@ -2,7 +2,7 @@
 
 library("randomForest");
 
-fileName <- "Mesothelioma_data_set_COL_NORM.csv"
+fileName <- "./Mesothelioma_data_set_COL_NORM.csv"
 mesothelioma_datatable <- read.csv(fileName, header = TRUE, sep =",");
 
 mesothelioma_datatable$"diagnosis.method" <- NULL

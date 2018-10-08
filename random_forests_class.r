@@ -9,7 +9,7 @@ source("./confusion_matrix_rates.r")
 
 threshold <- 0.5
 
-prc_data_norm <- read.csv(file="../data/MesotheliomaDataSet_original_COL_NORM_34features.csv",head=TRUE,sep=",",stringsAsFactors=FALSE)
+prc_data_norm <- read.csv(file="./Mesothelioma_data_set_COL_NORM.csv",head=TRUE,sep=",",stringsAsFactors=FALSE)
 
 prc_data_norm$"diagnosis.method" <- NULL
 
