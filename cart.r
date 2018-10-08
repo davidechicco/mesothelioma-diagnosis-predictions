@@ -64,8 +64,7 @@ mcc <- function(actual, predicted)
   return(mcc)
 }
 
-
-fileName <- "../data/MesotheliomaDataSet_original_COL_NORM.csv"
+fileName <- "./Mesothelioma_data_set_COL_NORM.csv"
 mesothelioma_datatable <- read.csv(fileName, header = TRUE, sep =",");
 
 original_mesothelioma_datatable <- mesothelioma_datatable
