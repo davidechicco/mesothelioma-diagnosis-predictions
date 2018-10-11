@@ -112,7 +112,7 @@ Install Torch and laurocks:<br>
 
 ## Dataset preparation
 
-Move to the project main directory, then use the script to download the mesothelioma dataset file, normalize the columns, and remove the "diagnosis method" feature (that is a duplicate of the target feature "class of diagnosis"):<br>
+Move to the project main directory, then use the script to download the mesothelioma dataset file, normalize the columns, and remove the "diagnosis method" feature (that is a duplicate of the target feature "class of diagnosis"):<br><br>
 `cd /mesothelioma-diagnosis-predictions/` <br><br>
 `./script_prepare_dataset.sh` <br>
 
