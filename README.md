@@ -133,6 +133,9 @@ To run the R software of the random forest classifier:<br>
 To run the R software of the CART classifier:<br>
 `Rscript cart.r`
 
+To run the R software of the CART classifier:<br>
+`Rscript oner_class.r`
+
 ### Feature selection
 
 To run the random forest R code for feature selection:<br>
