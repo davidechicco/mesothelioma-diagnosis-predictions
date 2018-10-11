@@ -122,7 +122,7 @@ Move to the project main directory, then use the script to download the mesothel
 ### Diagnosis prediction
 
 To run the Torch software of the perceptron-based artificial neural network:<br>
-`th mesothelioma_ann_script_val.lua Mesothelioma_data_set_COL_NORM.csv` <br>
+`th mesothelioma_ann_script_val.lua` <br>
 
 To run the Python 3 software of the probabilistic neural network:<br>
 `python3 pnn_mesothelioma_initial_py3.py` <br>
