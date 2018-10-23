@@ -133,7 +133,7 @@ To run the R software of the random forest classifier:<br>
 To run the R software of the CART classifier:<br>
 `Rscript cart.r`
 
-To run the R software of the CART classifier:<br>
+To run the R software of the onre rule classifier:<br>
 `Rscript oner_class.r`
 
 ### Feature selection
