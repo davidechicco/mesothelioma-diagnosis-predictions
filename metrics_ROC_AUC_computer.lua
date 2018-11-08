@@ -135,9 +135,7 @@ function metrics_ROC_AUC_computer(completePredValueVector, truthVector)
 -- 	print('total duration of the new area_roc metrics ROC_AUC_computer function: '..string.format("%.2d hours, %.2d minutes, %.2d seconds", durationNewAreaTotal/(60*60), durationNewAreaTotal/60%60, durationNewAreaTotal%60));
 -- 	io.flush();
 	
-	printTime(timeNewAreaStart0, " the new area_roc metrics ROC_AUC_computer function");
 
-	
 	return area_roc;
 end
 
