@@ -3,10 +3,8 @@ options(stringsAsFactors = FALSE)
 # library("clusterSim")
 
 library("OneR");
-
-
-
-
+library(class)
+library(gmodels)
 source("./confusion_matrix_rates.r")
 
 threshold <- 0.5
@@ -34,13 +32,16 @@ prc_data_train <- prc_data_norm[training_set_first_index:training_set_last_index
 prc_data_test <- prc_data_norm[test_set_first_index:test_set_last_index, 1:(target_index)] # NEW
 
 
-library(class)
-library(gmodels)
+
 
 #rf_new <- randomForest(class.of.diagnosis ~ ., data=prc_data_train, importance=TRUE, proximity=TRUE)
 
 
+# Original application of One Rule with all the dataset
 prc_model_train <- OneR(prc_data_train, verbose = TRUE)
+
+# Generation of the CART model
+# prc_model_train <- OneR(class.of.diagnosis ~ keep.side + platelet.count..PLT., method="class", data=prc_data_train);
 
 summary(prc_model_train)
 prediction <- predict(prc_model_train, prc_data_test)

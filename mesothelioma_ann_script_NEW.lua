@@ -1,4 +1,6 @@
 
+-- Function sleep
+function sleep(n) os.execute("sleep " .. tonumber(n)); end
 
 -- Adapted from mesothelioma_ann_script_KhalidAbdulla.lua
 
@@ -114,6 +116,7 @@ function confusion_matrix(predictionTestVect, truthVect, threshold, printValues)
     print(" TN = "..comma_value(tn).." / "..comma_value(tonumber(fp+tn)).."\t (truth == 0) & (prediction < threshold)\n");
 
   local continueLabel = true
+  local signedMCC = -2
 
     if continueLabel then
       upperMCC = (tp*tn) - (fp*fn)
@@ -122,7 +125,7 @@ function confusion_matrix(predictionTestVect, truthVect, threshold, printValues)
 
       MatthewsCC = -2
       if lowerMCC>0 then MatthewsCC = upperMCC/lowerMCC end
-      local signedMCC = MatthewsCC
+      signedMCC = MatthewsCC
       print("signedMCC = "..signedMCC)
 
       if MatthewsCC > -2 then print("\n::::\tMatthews correlation coefficient = "..signedMCC.."\t::::\n");
@@ -155,8 +158,15 @@ function confusion_matrix(predictionTestVect, truthVect, threshold, printValues)
 	print("TN rate CANNOT be computed because (tn+fp)==0")    
       end
 
+   print("\nMCC\taccuracy\tF1_score\tTP_rate\tTN_rate")
+    io.write("+"..round(signedMCC,2).."\t")
+    io.write(round(accuracy,2).."\t\t"..round(f1_score,2))
+    io.write("\t\t"..round(tp_rate,2).."\t"..round(tn_rate,2).."\n")
+    io.flush()
            
     end
+    
+
 
     return {accuracy, arrayFPindices, arrayFPvalues, MatthewsCC};
 end
@@ -182,7 +192,7 @@ end
 
 
 
--- ##############################3
+-- ##############################
 
 local profile_vett = {}
 local csv = require("csv")
@@ -218,14 +228,15 @@ MAX_MSE = 4
 
 -- CHANGE: increased learn_rate to 0.01, reduced hidden units to 50, turned momentum on, increased iterations to 200
 LEARN_RATE = 0.01
-local hidden_units = 50
+-- local hidden_units = 50
 MOMENTUM = true
 ITERATIONS = 200
 -------------------------------------
 
-local hidden_layers = 1
+local hiddenUnitVect = {5, 10, 15, 20,  25,  30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120,  125,  130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 225,  230, 235, 240, 245, 250,  255, 260, 265, 270, 275, 280, 285, 290, 295, 300}
 
-local hiddenUnitVect = {50, 100, 150, 200}
+
+
 local hiddenLayerVect = {1,2,3,4,5}
 
 local profile_vett_data = {}
@@ -253,8 +264,8 @@ print("Number of value profiles (rows) = "..#profile_vett_data);
 print("Number features (columns) = "..#(profile_vett_data[1]));
 print("Number of targets (rows) = "..#label_vett);
 
-local table_row_outcome = label_vett
-local table_rows_vett = profile_vett
+table_row_outcome = label_vett
+table_rows_vett = profile_vett
 
 -- ########################################################
 
@@ -293,7 +304,11 @@ permutedIndexVect = permute(indexVect, #indexVect, #indexVect);
 ---------------------------
 TRAINING_SET_PERC = 60
 VALIDATION_SET_PERC = 20
-TEST_SET_PERC = 20
+TEST_SET_PERC = 100 - TRAINING_SET_PERC - VALIDATION_SET_PERC
+
+print("\nTRAINING_SET_PERC = "..TRAINING_SET_PERC)
+print("VALIDATION_SET_PERC = "..VALIDATION_SET_PERC)
+print("TEST_SET_PERC = "..TEST_SET_PERC.."\n")
 
 local training_set_size = round((TRAINING_SET_PERC*(#table_rows_vett)/100))
 local validation_set_size = round((VALIDATION_SET_PERC*(#table_rows_vett)/100))
@@ -311,10 +326,23 @@ modelFileVect = {}
 
 local original_validation_indexes = {}
 
+local train_poss = 0
+local train_negs = 0
+local val_poss = 0
+local val_negs = 0
+local test_poss = 0
+local test_negs = 0
+
 for i=1,#table_rows_vett do
     
   if i<=(tonumber(#table_rows_vett-TEST_SET_SIZE)-validation_set_size) then
     train_table_row_profile[#train_table_row_profile+1] = {torch.Tensor(table_rows_vett[permutedIndexVect[i]]), torch.Tensor{table_row_outcome[permutedIndexVect[i]]}}
+    
+    if ( train_table_row_profile[#train_table_row_profile][2][1]==1) then
+        train_poss = train_poss + 1
+    else   
+        train_negs = train_negs + 1
+    end
   
   elseif i> (#table_rows_vett-TEST_SET_SIZE-validation_set_size) and i <= (#table_rows_vett-TEST_SET_SIZE) then
       
@@ -322,46 +350,66 @@ for i=1,#table_rows_vett do
     -- print("original_validation_indexes =".. permutedIndexVect[i]);
     
     validation_table_row_profile[#validation_table_row_profile+1] = {torch.Tensor(table_rows_vett[permutedIndexVect[i]]), torch.Tensor{table_row_outcome[permutedIndexVect[i]]}}
+    
+     if (validation_table_row_profile[#validation_table_row_profile][2][1]==1) then
+        val_poss = val_poss + 1
+    else   
+        val_negs = val_negs + 1
+    end
    
   else
     
     test_table_row_profile[#test_table_row_profile+1] = {torch.Tensor(table_rows_vett[permutedIndexVect[i]]), torch.Tensor{table_row_outcome[permutedIndexVect[i]]}}
     
+    if (test_table_row_profile[#test_table_row_profile][2][1]==1) then
+        test_poss = test_poss + 1
+    else   
+        test_negs = test_negs + 1
+    end
+    
   end
 end
+
+print("\ntrain_poss =".. train_poss)
+print("train_negs =".. train_negs.."\n")
+print("val_poss =".. val_poss)
+print("val_negs =".. val_negs.."\n")
+print("test_poss =".. test_poss)
+print("test_negs =".. test_negs.."\n")
+
 
 ---------------------------
 
 require 'nn'
-perceptron = nn.Sequential()
-input_number = #table_rows_vett[1]
-
-perceptron:add(nn.Linear(input_number, hidden_units))
-perceptron:add(nn.Sigmoid())
-if DROPOUT_FLAG==true then perceptron:add(nn.Dropout()) end
-
-for w=1,hidden_layers do
-  perceptron:add(nn.Linear(hidden_units, hidden_units))
-  perceptron:add(nn.Sigmoid())
-  if DROPOUT_FLAG==true then perceptron:add(nn.Dropout()) end
-end
-perceptron:add(nn.Linear(hidden_units, output_number))
-
-
-function train_table_row_profile:size() return #train_table_row_profile end 
-function test_table_row_profile:size() return #test_table_row_profile end 
-
 
 -- OPTIMIZATION LOOPS  
 local MCC_vect = {}  
 
 for a=1,#hiddenUnitVect do
   for b=1,#hiddenLayerVect do
-
+      
     local hidden_units = hiddenUnitVect[a]
     local hidden_layers = hiddenLayerVect[b]
-    print("\n\n\n >>>>>>>>>>>>>>>>>> ")
-    print("hidden_units = "..hidden_units.."\t output_number = "..output_number.." hidden_layers = "..hidden_layers)
+    print("\n\n\n> > > > > > > > > New hyper-parameter configuration > > > > > > > > > ")
+    print("hidden_units = "..hidden_units.."\t  hidden_layers = "..hidden_layers)
+      
+    local perceptron = nn.Sequential()
+    input_number = #table_rows_vett[1]
+
+    perceptron:add(nn.Linear(input_number, hidden_units))
+    perceptron:add(nn.Sigmoid())
+    if DROPOUT_FLAG==true then perceptron:add(nn.Dropout()) end
+
+    for w=1,hidden_layers do
+    perceptron:add(nn.Linear(hidden_units, hidden_units))
+    perceptron:add(nn.Sigmoid())
+    if DROPOUT_FLAG==true then perceptron:add(nn.Dropout()) end
+    end
+    perceptron:add(nn.Linear(hidden_units, output_number))
+
+
+    function train_table_row_profile:size() return #train_table_row_profile end 
+    function test_table_row_profile:size() return #test_table_row_profile end
 
 
     local criterion = nn.MSECriterion()  
@@ -383,41 +431,42 @@ for a=1,#hiddenUnitVect do
 
       local loopIterations = 1
       for epoch=1,ITERATIONS do
-    for k=1,#train_table_row_profile do
+            for k=1,#train_table_row_profile do
 
-        -- Function feval 
-        local function feval(params)
-        gradParams:zero()
+            -- Function feval 
+            local function feval(params)
+            gradParams:zero()
 
-        local thisProfile = train_table_row_profile[k][1]
-        local thisLabel = train_table_row_profile[k][2]
+            local thisProfile = train_table_row_profile[k][1]
+            local thisLabel = train_table_row_profile[k][2]
+                
+            local thisPrediction = perceptron:forward(thisProfile)
+            local loss = criterion:forward(thisPrediction, thisLabel)
+            
+            -- print("thisPrediction = "..round(thisPrediction[1],2).." thisLabel = "..thisLabel[1])
+            -- sleep(2)
 
-        local thisPrediction = perceptron:forward(thisProfile)
-        local loss = criterion:forward(thisPrediction, thisLabel)
+            lossSum = lossSum + loss
+            error_progress = lossSum*100 / (loopIterations*MAX_MSE)
 
-        -- print("thisPrediction = "..round(thisPrediction[1],2).." thisLabel = "..thisLabel[1])
+    --         if ((loopIterations*100/total_runs)*10)%10==0 then
+    --           io.write("completion: ", round((loopIterations*100/total_runs),2).."%" )
+    --           io.write(" (epoch="..epoch..")(element="..k..") loss = "..round(loss,2).." ")      
+    --           io.write("\terror progress = "..round(error_progress,5).."%\n")
+    --         end
 
-        lossSum = lossSum + loss
-        error_progress = lossSum*100 / (loopIterations*MAX_MSE)
+            local dloss_doutput = criterion:backward(thisPrediction, thisLabel)
 
---         if ((loopIterations*100/total_runs)*10)%10==0 then
---           io.write("completion: ", round((loopIterations*100/total_runs),2).."%" )
---           io.write(" (epoch="..epoch..")(element="..k..") loss = "..round(loss,2).." ")      
---           io.write("\terror progress = "..round(error_progress,5).."%\n")
---         end
+            perceptron:backward(thisProfile, dloss_doutput)
 
-        local dloss_doutput = criterion:backward(thisPrediction, thisLabel)
-
-        perceptron:backward(thisProfile, dloss_doutput)
-
-        return loss,gradParams
+            return loss,gradParams
         end
       optim.sgd(feval, params, optimState)
       loopIterations = loopIterations+1
     end     
    end
    
-   print("\n\n### applyModel(perceptron, validation_table_row_profile)")     
+   print("### applyModel(perceptron, validation_table_row_profile)")     
    MCC_vect[#MCC_vect+1] = applyModel(perceptron, validation_table_row_profile)[1]
    hus_vect[#hus_vect+1] = hidden_units
    hl_vect[#hl_vect+1] = hidden_layers
@@ -448,8 +497,14 @@ for k=1,#MCC_vect do
       end
 end
 
+
+
+
 local modelFileToLoad = tostring(modelFileVect[maxMCCpos])
-print("\n\nmodelFileToLoad ="..modelFileToLoad)
+io.write("\n\nmodelFileToLoad ="..modelFileToLoad)
+io.write("\n top model:  units layers = ".. hus_vect[maxMCCpos])
+io.write(" hidden layers  = ".. hl_vect[maxMCCpos].."\n")
+io.flush()
 
 local loadedModel = torch.load(modelFileToLoad)
 
