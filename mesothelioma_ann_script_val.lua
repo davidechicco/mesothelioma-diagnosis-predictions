@@ -61,7 +61,7 @@ function executeTest(testPerceptron, dataset_patient_profile)
       local current_label = dataset_patient_profile[i][2][1]
       local prediction = testPerceptron:forward(dataset_patient_profile[i][1])[1]
 
-      prediction = (prediction+1)/2      
+      -- prediction = (prediction+1)/2      
       predictionTestVect[i] = prediction
       truthVect[i] = current_label      
 
@@ -348,9 +348,8 @@ DROPOUT_FLAG = false
 MOMENTUM_ALPHA = 0.5
 
 MOMENTUM = false
-LEARN_RATE = 0.1 -- best is 0.01
-ITERATIONS = 2000 -- best is 200
-local hidden_units = 50 -- best is 50
+LEARN_RATE = 0.01 
+ITERATIONS = 500
 
 -- LEARN_RATE = 0.01
 -- local hidden_units = 50
@@ -360,7 +359,7 @@ local hidden_units = 50 -- best is 50
 -- local hidden_layers = 1 -- best is 1
 -- local hiddenUnitVect = {25,50,75,100,125,150,175,200,225,250,275,300}
 local hiddenUnitVect = {5, 10, 25, 35, 50, 75, 100}
-local hiddenLayerVect = {1, 2, 3}
+local hiddenLayerVect = {1}
 -- local hiddenLayerVect = {1,2,3,4,5}
 
 local max_values = {}
@@ -564,7 +563,7 @@ for b=1,#hiddenLayerVect do
 		local thisPrediction = perceptron:forward(thisProfile)		
 		
 		
-		thisPrediction = (thisPrediction+1)/2 -- [-1,+1] -> [0,1]
+		-- thisPrediction = (thisPrediction+1)/2 -- [-1,+1] -> [0,1]
 		
 		local loss = criterion:forward(thisPrediction, thisLabel)
 		
