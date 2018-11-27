@@ -147,11 +147,9 @@ More information about this project can be found on this paper:
 >  Davide Chicco, and Cristina Rovelli, "Computational prediction of diagnosis and feature selection on mesothelioma patient health records", PLOS One, 2018. In press.
 
 ## License
-All the software code is licensed under the [GNU General Public License, version 2 (GPLv2)](http://www.gnu.org/licenses/gpl-2.0-standalone.html).
-
-The [mesothelioma dataset](https://archive.ics.uci.edu/ml/datasets/Mesothelioma%C3%A2%E2%82%AC%E2%84%A2s+disease+data+set+) is publically available on the website of the [University of California Irvine Machine Learning Repository](http://archive.ics.uci.edu/ml/), under their copyright license.
+All the software code is licensed under the [GNU General Public License, version 2 (GPLv2)](http://www.gnu.org/licenses/gpl-2.0-standalone.html). <br>
+The [mesothelioma dataset](https://archive.ics.uci.edu/ml/datasets/Mesothelioma%C3%A2%E2%82%AC%E2%84%A2s+disease+data+set+) is publically available on the website of the [University of California Irvine Machine Learning Repository](http://archive.ics.uci.edu/ml/), under its copyright license.
 
 ## Contacts
-This sofware was developed by [Davide Chicco](http://www.DavideChicco.it) at the [Princess Margaret Cancer Centre](http://www.uhn.ca/PrincessMargaret/Research/) and at the [Peter Munk Cardiac Centre](https://www.uhn.ca/PMCC/Research/Pages/default.aspx) (Toronto, Ontario, Canada).
-
+This sofware was developed by [Davide Chicco](http://www.DavideChicco.it) at the [Princess Margaret Cancer Centre](http://www.uhn.ca/PrincessMargaret/Research/) and at the [Peter Munk Cardiac Centre](https://www.uhn.ca/PMCC/Research/Pages/default.aspx) (Toronto, Ontario, Canada). <br>
 For questions or help, please write to [davidechicco(AT)davidechicco.it](http://www.DavideChicco.it)
