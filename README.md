@@ -141,6 +141,11 @@ To run the R software of the onre rule classifier:<br>
 To run the random forest R code for feature selection:<br>
 `Rscript random_forests.r Mesothelioma_data_set_COL_NORM.csv` <br><br>
 
+## Reference
+If you use this repository, or you want to know more about the implemented methods, please read this paper:
+
+>  Davide Chicco, and Cristina Rovelli, "Computational prediction of diagnosis and feature selection on mesothelioma patient health records", PLOS One, 2018. In press.
+
 ## License
 All the software code is licensed under the [GNU General Public License, version 2 (GPLv2)](http://www.gnu.org/licenses/gpl-2.0-standalone.html).
 The [metrics](https://github.com/hpenedones/metrics) package was developed and released by hpdenedones under the same GPLv2 license. The [weight-init.lua](https://github.com/e-lab/torch-toolbox) file was developed and released by e-lab under the same GPLv2 license
