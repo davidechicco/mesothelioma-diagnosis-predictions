@@ -142,7 +142,7 @@ To run the random forest R code for feature selection:<br>
 `Rscript random_forests.r Mesothelioma_data_set_COL_NORM.csv` <br><br>
 
 ## Reference
-If you use this repository, or you want to know more about the implemented methods, please read this paper:
+More information about this project can be found on this paper:
 
 >  Davide Chicco, and Cristina Rovelli, "Computational prediction of diagnosis and feature selection on mesothelioma patient health records", PLOS One, 2018. In press.
 
