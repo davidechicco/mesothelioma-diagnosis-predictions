@@ -144,7 +144,8 @@ To run the random forest R code for feature selection:<br>
 ## Reference
 More information about this project can be found on this paper:
 
->  Davide Chicco, and Cristina Rovelli, "Computational prediction of diagnosis and feature selection on mesothelioma patient health records", PLOS One, 2018. In press.
+>  Davide Chicco, and Cristina Rovelli, "Computational prediction of diagnosis and feature selection on mesothelioma patient health records", PLoS ONE 14(1): e0208737, 2019.  [https://doi.org/10.1371/journal.pone.0208737]( https://doi.org/10.1371/journal.pone.0208737)
+
 
 ## License
 All the software code is licensed under the [GNU General Public License, version 2 (GPLv2)](http://www.gnu.org/licenses/gpl-2.0-standalone.html). <br>
